@@ -10,6 +10,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import video
 import os
+import generate_images
 
 load_dotenv()
 
@@ -34,8 +35,9 @@ def transcribe():
             audio = flask.request.get_data()
 
         transcript = fetch_transcript(audio)
-        images = generate_images(transcript)
-
+        images = generate_images.text_to_images(False, transcript)
+        print(images)
+        
         return transcript
 
         #audio_path = ...
@@ -54,7 +56,3 @@ def fetch_transcript(audio: bytes):
         response = deepgram_response.text
     
     return response
-
-
-def generate_images(transcript_json):
-    pass
