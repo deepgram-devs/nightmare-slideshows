@@ -52,7 +52,7 @@ def transcribe():
         output_path = request_dir + "video.mp4"
         video.generate_video(audio_path, transcript, images, output_path)
 
-        return {"path": f"{request_id}/video.mp4"}
+        return {"path": f"{STATIC_DIR}/{request_id}/video.mp4"}
 
 
 @app.route('/static/{path:path}', methods=['GET'])
