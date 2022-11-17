@@ -9,3 +9,13 @@ gunicorn app:app
 ```
 
 Also, maybe, modify `.flaskenv` as suits your needs.
+
+## Frontend Setup
+
+First, `cd frontend`.
+
+Install dependencies: `npm install`
+
+Run hot-reloading dev build: `npm run dev`
+
+Compile for production: `npm run build`
