@@ -19,14 +19,15 @@ allowed_origins=re.compile('(.*\.)?deepgram\.com(:\d+)?')
 app = flask.Flask(__name__)
 CORS(app, origins="*")
 
+STATIC_DIR = os.environ.get("STATIC_DIR", "./static").rstrip("/")
+
 @app.route('/', methods=['GET', 'POST'])
 def transcribe():
     if request.method == 'GET':
         return 'Hello, world!'
 
     else:
-        #print(dir(uuid))
-        #request_id = uuid.UUID4()
+        request_id = uuid.uuid4()
 
         if flask.request.is_json:
             req = flask.request.get_json()
@@ -35,15 +36,25 @@ def transcribe():
             audio = flask.request.get_data()
 
         transcript = fetch_transcript(audio)
+        if isinstance(transcript, str):
+            return transcript, 500
+
+        request_dir=f"{STATIC_DIR}/{request_uuid}/"
+
+        os.mkdir(request_dir)
+
+        audio_path = request_dir + "audio"
+        with open(audio_path, "w") as audiof:
+            audiof.write(audio)
+
         images = generate_images.text_to_images(False, transcript)
         print(images)
         
+        output_path = request_dir + "video.mp4"
+        #video.generate_video(audio_path, transcript, images, output_path)
+
         return transcript
 
-        #audio_path = ...
-        #transcript_path = ...
-
-        #video.generate_video(audio_path, transcript_path, images)
 
 def fetch_transcript(audio: bytes):
     deepgram_response = requests.post("https://api.deepgram.com/v1/listen?model=general&language=en&tier=enhanced&punctuate=true&utterances=true", headers={
