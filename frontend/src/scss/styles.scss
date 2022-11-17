@@ -1,0 +1,155 @@
+@import "~bootstrap/scss/bootstrap";
+
+@font-face {
+    font-family: "Favorit";
+    src: url("https://d3g83wah6bizj3.cloudfront.net/font/ABCFavorit-Bold.woff2") format("woff2"),
+            url("https://d3g83wah6bizj3.cloudfront.net/font/ABCFavorit-Bold.woff") format("woff");
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://rsms.me/inter/font-files/Inter-Regular.woff2?v=3.19") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://rsms.me/inter/font-files/Inter-Italic.woff2?v=3.19") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=3.19") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url("https://rsms.me/inter/font-files/Inter-SemiBoldItalic.woff2?v=3.19") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("https://rsms.me/inter/font-files/Inter-Bold.woff2?v=3.19") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("https://rsms.me/inter/font-files/Inter-BoldItalic.woff2?v=3.19") format("woff2");
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: rgba(3.92%,7.06%,10.59%,1);
+    //color: rgba(84.31%,87.45%,92.16%,1);
+    color: #fff;
+}
+
+h1 {
+    font-family: 'Favorit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 125%;
+}
+
+label {
+    color: rgba(84.31%,87.45%,92.16%,1);
+    font-family: Inter, Arial, sans-serif;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.upload-form {
+    margin: 0 auto;
+}
+
+.alf {
+    max-height: 250px;
+}
+
+.center-me {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.aside {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-style: italic;
+    color: rgba(49.8%,58.04%,67.84%,1);
+}
+
+.copy {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.left {
+    text-align: left !important;
+}
+
+.btn {
+    color: black;
+    background-color: hsl(158, 83%, 57%);
+    border-color: rgba(21.96%,92.94%,67.45%,1);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-weight: bold;
+    border-radius: 0.0625rem;
+    min-height: 50px;
+}
+
+#upload-button {
+	border: 0;
+  	clip: rect(0, 0, 0, 0);
+  	height: 1px;
+  	overflow: hidden;
+  	padding: 0;
+ 	position: absolute !important;
+ 	white-space: nowrap;
+ 	width: 1px;
+    margin: 0px 10px;
+	padding: 5px 25px;
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: bold;
+	transition-duration: .5s;
+	transition-property: color, background-color, border;
+	color: white;
+	background-color: #e93d45;
+}
+
+.btn:hover {
+    color: black;
+    background-color: adjust-color($color: hsl(158, 83%, 57%), $hue: 0, $saturation: 0%, $lightness: 2%, $alpha: 1.0);
+    border-color: adjust-color($color: hsl(158, 83%, 57%), $hue: 0, $saturation: 0%, $lightness: 2%, $alpha: 1.0);
+    filter: contrast(1.5);
+}
