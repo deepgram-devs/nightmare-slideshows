@@ -1,5 +1,6 @@
 <script setup>
 import StatusFooter from './components/StatusFooter.vue';
+import AudioUploader from './components/AudioUploader.vue';
 </script>
 
 <template>
@@ -16,18 +17,16 @@ import StatusFooter from './components/StatusFooter.vue';
 	<div class="row">
 		<div class="col-xl-10 col-xxl-8 px-4 py-5 upload-form">
 			<form class="p-4 p-md-5 border bg-dark">
-
 			<div class="left">
 				<label class="mb-1" for="floatingInput">Pick an audio file:</label>
 				<input type="file" accept="audio/*" class="form-control" v-on:change="handleChange"/>
 				<i class="mt-3 aside">We accept over 40 common audio file formats including MP3, WAV, FLAC, M4A, and more.</i>
 			</div>
-
-
-			<button class="mt-4 btn btn-lg btn-primary" type="submit">Create My Slideshow</button>
+			<button class="mt-4 btn btn-lg btn-primary" type="submit" v-on:click="submitFile()">Create My Slideshow</button>
 			</form>
 		</div>
 	</div>
+	<AudioUploader @transcribe="handleTranscribe" @listen="handleListen" @summarize="handleSummarize" @done="handleDone"/>
   </div>
 
 	<StatusFooter :listen="listen" :generate="generate" :done="done" />
