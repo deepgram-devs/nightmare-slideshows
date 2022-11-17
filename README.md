@@ -1,6 +1,10 @@
 # boringslideshows.no
 
-You will need to install `gunicorn`, `ffmpeg`, `pip install flask flask-cors`, and `pip install git+https://github.com/openai/whisper.git`.
+## Backend Setup
+
+`pip install -r requirements.txt`
+
+You will need to install `gunicorn` and `ffmpeg`.
 
 Run with:
 
@@ -9,6 +13,8 @@ gunicorn app:app
 ```
 
 Also, maybe, modify `.flaskenv` as suits your needs.
+
+Create a `.env` file with `DEEPGRAM_API_KEY=YOUR_KEY_HERE`.
 
 ## Frontend Setup
 
