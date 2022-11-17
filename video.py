@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     generate_video(
         "/home/cliff/Music/youtoobio-cannibal-toads.mp3",
-        "./toads.json",
+        "../toads.json",
         images,
         "./toads-functional.mp4",
     )
