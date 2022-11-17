@@ -46,7 +46,7 @@ def transcribe():
         with open(audio_path, "w") as audiof:
             audiof.write(audio)
 
-        images = generate_images.text_to_images(False, transcript, request_dir)
+        images = generate_images.text_to_images(transcript, request_dir)
         print(images)
         
         output_path = request_dir + "video.mp4"
