@@ -65,7 +65,7 @@ def fetch_transcript(audio: bytes):
     }, data=audio)
 
     if deepgram_response.ok:
-        response = deepgram_response.json()['results'].get('utterances', [])
+        response = deepgram_response.json()
     else:
         response = deepgram_response.text
     
