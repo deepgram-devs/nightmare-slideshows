@@ -14,7 +14,7 @@ def generate_video(audio_path: str, transcript, images: Iterable[str], output_pa
     output_path is the name of the file to save the audio as.
     '''
 
-    utts = transcript['results']['utterances']
+    utts = transcript['results'].get('utterances', [])
     clips = []
     for (utt, image, next) in zip(utts, itertools.cycle(images), itertools.chain(utts[1:], [None])):
         start = utt['start']
