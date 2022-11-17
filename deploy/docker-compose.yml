@@ -1,0 +1,22 @@
+version: "2.4"
+services:
+  nginx:
+    image: deepgram/nginx-certbot:latest
+    logging:
+      options:
+       max-file: "4"
+       max-size: "250M"
+    volumes:
+      - "/data/letsencrypt/acme-challenge:/var/lib/letsencrypt:rw"
+      - "/data/sites:/etc/nginx/conf.d:ro"
+      - "/data/www:/var/www/data"
+      - "/data/letsencrypt/keys:/etc/letsencrypt:rw"
+    environment:
+      - "CERTBOT_DOMAINS=boringslideshows.no.deepgram.com"
+      - "CERTBOT_STAGING=false"
+      - "CERTBOT_EMAIL=steve@deepgram.com"
+      - "CERTBOT_SERVER=https://acme-v02.api.letsencrypt.org/directory"
+      - "CERTBOT_DISABLE=false"
+    ports:
+      - "80:80"
+      - "443:443"
