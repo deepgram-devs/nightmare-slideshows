@@ -6,16 +6,15 @@ from pathlib import Path
 from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips
 
 
-def generate_video(audio_path: str, transcript_path: str, images: Iterable[str], output_path: Path):
+def generate_video(audio_path: str, transcript, images: Iterable[str], output_path: str):
     '''
     Construct a video that switches between the provided images at the boundaries 
     of the utterances in the provided transcript.  The original audio should also be provided.
 
     output_path is the name of the file to save the audio as.
     '''
-    transcript = json.load(open(transcript_path))
-    utts = transcript['results']['utterances']
 
+    utts = transcript['results']['utterances']
     clips = []
     for (utt, image, next) in zip(utts, itertools.cycle(images), itertools.chain(utts[1:], [None])):
         start = utt['start']
