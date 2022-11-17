@@ -25,9 +25,9 @@ STATIC_DIR = os.environ.get("STATIC_DIR", "./static").rstrip("/")
 def transcribe():
     if request.method == 'GET':
         return 'Hello, world!'
-
     else:
         request_id = uuid.uuid4()
+        request_dir=f"{STATIC_DIR}/{request_uuid}/"
 
         if flask.request.is_json:
             req = flask.request.get_json()
@@ -37,9 +37,8 @@ def transcribe():
 
         transcript = fetch_transcript(audio)
         if isinstance(transcript, str):
+            # A string response indicates an error.  Return it, and call it a 500 because error handling is boring
             return transcript, 500
-
-        request_dir=f"{STATIC_DIR}/{request_uuid}/"
 
         os.mkdir(request_dir)
 
@@ -47,7 +46,7 @@ def transcribe():
         with open(audio_path, "w") as audiof:
             audiof.write(audio)
 
-        images = generate_images.text_to_images(False, transcript)
+        images = generate_images.text_to_images(False, transcript, request_dir)
         print(images)
         
         output_path = request_dir + "video.mp4"
