@@ -6,10 +6,12 @@ ENV PIP_ROOT_USER_ACTION=ignore
 
 RUN apt-get update -y && \
     apt-get install -y  ffmpeg python3-pip
-RUN pip install flask flask-cors gunicorn
+RUN pip install gunicorn
 
 WORKDIR /app
 
 COPY . /app
+
+RUN pip3 install -r /app/requirements.txt 
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--timeout", "300", "app:app"]
