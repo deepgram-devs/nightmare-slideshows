@@ -50,9 +50,9 @@ def transcribe():
         print(images)
         
         output_path = request_dir + "video.mp4"
-        #video.generate_video(audio_path, transcript, images, output_path)
+        video.generate_video(audio_path, transcript, images, output_path)
 
-        return transcript
+        return {"path": f"{request_id}/video.mp4"}
 
 
 def fetch_transcript(audio: bytes):
