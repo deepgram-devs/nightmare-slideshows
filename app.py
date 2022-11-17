@@ -55,6 +55,10 @@ def transcribe():
         return {"path": f"{request_id}/video.mp4"}
 
 
+@app.route('/static/{path:path}', methods=['GET'])
+def assets(path):
+    return flask.send_from_directory(STATIC_DIR, path)
+
 def fetch_transcript(audio: bytes):
     deepgram_response = requests.post("https://api.deepgram.com/v1/listen?model=general&language=en&tier=enhanced&punctuate=true&utterances=true", headers={
         'Authorization': 'Token {}'.format(os.environ.get("DEEPGRAM_API_KEY"))
