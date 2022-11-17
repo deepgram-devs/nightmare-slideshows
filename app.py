@@ -27,7 +27,7 @@ def transcribe():
         return 'Hello, world!'
     else:
         request_id = uuid.uuid4()
-        request_dir=f"{STATIC_DIR}/{request_uuid}/"
+        request_dir=f"{STATIC_DIR}/{request_id}/"
 
         if flask.request.is_json:
             req = flask.request.get_json()
