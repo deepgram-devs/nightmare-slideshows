@@ -43,7 +43,7 @@ def transcribe():
         os.mkdir(request_dir)
 
         audio_path = request_dir + "audio"
-        with open(audio_path, "w") as audiof:
+        with open(audio_path, "wb") as audiof:
             audiof.write(audio)
 
         images = generate_images.text_to_images(transcript, request_dir)
