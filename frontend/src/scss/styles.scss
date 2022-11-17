@@ -2,7 +2,8 @@
 
 @font-face {
     font-family: "Favorit";
-    src: url("https://d3g83wah6bizj3.cloudfront.net/font/ABCFavorit-Bold.woff2") format("woff2"),
+    src:    url("/static/ABCFavorit-Bold.woff2") format("woff2"),
+            url("https://d3g83wah6bizj3.cloudfront.net/font/ABCFavorit-Bold.woff2") format("woff2"),
             url("https://d3g83wah6bizj3.cloudfront.net/font/ABCFavorit-Bold.woff") format("woff");
     font-display: swap;
     font-weight: bold;
