@@ -60,11 +60,12 @@ def transcribe():
         output_path = request_dir + "video.mp4"
         video.generate_video(audio_path, transcript, images, output_path)
 
-        return {"path": f"{STATIC_DIR}/{request_id}/video.mp4"}
+        return {"path": f"/assets/{request_id}/video.mp4"}
 
 
-@app.route('/static/<path:path>', methods=['GET'])
+@app.route('/assets/<path:path>', methods=['GET'])
 def assets(path):
+    print("sending %s from %s" % (path, STATIC_DIR))
     return flask.send_from_directory(STATIC_DIR, path)
 
 def fetch_transcript(audio: bytes):
