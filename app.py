@@ -1,16 +1,16 @@
 import flask
-import tempfile
-import string
-import uuid
-import re
-import datetime
-import requests
 from flask import jsonify, request
 from flask_cors import CORS
+import json
+import re
+import string
+import uuid
+import requests
 from dotenv import load_dotenv
-import video
 import os
+
 import generate_images
+import video
 
 load_dotenv()
 
@@ -19,6 +19,7 @@ allowed_origins=re.compile('(.*\.)?deepgram\.com(:\d+)?')
 app = flask.Flask(__name__)
 CORS(app, origins="*")
 
+print(json.dumps(os.environ, indent=2))
 STATIC_DIR = os.environ.get("STATIC_DIR", "./static").rstrip("/")
 
 @app.route('/', methods=['GET', 'POST'])
