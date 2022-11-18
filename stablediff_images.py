@@ -14,7 +14,9 @@ pipe = pipe.to(device)
 
 # Create a list of images and return the list of saved filenames 
 # in the same order as the utterances in the transcript
-def text_to_images(utterances, request_dir):
+def text_to_images(transcript, request_dir):
+  utterances = transcript['results']['utterances']
+  print("no of utterances: {}".format(len(utterances)))
   os.makedirs(request_dir, exist_ok=True)
   filenames = []
   for k, utt in enumerate(utterances):
@@ -27,5 +29,5 @@ def text_to_images(utterances, request_dir):
 
 
 if __name__ == '__main__':
-    utts = [{'transcript': 'hello'}, {'transcript': 'chasing after car'}]
+    utts = {'results': {'utterances': [{'transcript': 'hello'}, {'transcript': 'chasing after car'}]}}
     text_to_images(utterances=utts, request_dir='hellohere')

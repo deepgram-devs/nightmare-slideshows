@@ -9,6 +9,9 @@ import requests
 from dotenv import load_dotenv
 import os
 
+STATIC_DIR = os.environ.get("STATIC_DIR", "./static").rstrip("/")
+print("static dir:", STATIC_DIR)
+
 if os.environ.get("USE_DEEPAI") == "true":
     print("using deepai")
     import deepai_images as generate_images
@@ -25,7 +28,6 @@ allowed_origins=re.compile('(.*\.)?deepgram\.com(:\d+)?')
 app = flask.Flask(__name__)
 CORS(app, origins="*")
 
-STATIC_DIR = os.environ.get("STATIC_DIR", "./static").rstrip("/")
 
 @app.route('/', methods=['GET', 'POST'])
 def transcribe():
