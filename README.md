@@ -16,6 +16,7 @@ Also, maybe, modify `.flaskenv` as suits your needs.
 
 Create a `.env` file with `DEEPGRAM_API_KEY=YOUR_KEY_HERE`.
 
+Create a `.env` file with `HUGGINGFACE_TOKEN=YOUR_HUGGINGFACE_TOKEN`.
 ## Frontend Setup
 
 First, `cd frontend`.
