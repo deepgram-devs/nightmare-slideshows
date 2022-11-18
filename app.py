@@ -9,7 +9,13 @@ import requests
 from dotenv import load_dotenv
 import os
 
-import generate_images
+if os.environ.get("USE_DEEPAI") == "true":
+    print("using deepai")
+    import deepai_images as generate_images
+else:
+    print("using stablediffusion")
+    import stablediff_images as generate_images
+
 import video
 
 load_dotenv()
@@ -19,7 +25,6 @@ allowed_origins=re.compile('(.*\.)?deepgram\.com(:\d+)?')
 app = flask.Flask(__name__)
 CORS(app, origins="*")
 
-print(json.dumps(os.environ, indent=2))
 STATIC_DIR = os.environ.get("STATIC_DIR", "./static").rstrip("/")
 
 @app.route('/', methods=['GET', 'POST'])

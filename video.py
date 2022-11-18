@@ -25,7 +25,7 @@ def generate_video(audio_path: str, transcript, images: Iterable[str], output_pa
         else:
             end = utt['end']
         duration = end - start 
-        clips.append(ImageClip(image).set_duration(duration * 3).set_fps(24))
+        clips.append(ImageClip(image).set_duration(duration).set_fps(24))
 
     final = concatenate_videoclips(clips)
     final.audio = AudioFileClip(audio_path)

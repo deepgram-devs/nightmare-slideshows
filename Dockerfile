@@ -17,4 +17,4 @@ RUN pip3 install -r /app/requirements.txt
 
 COPY . /app
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--timeout", "300", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--timeout", "1800", "app:app"]
