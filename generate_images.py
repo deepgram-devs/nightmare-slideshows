@@ -1,11 +1,14 @@
 import os
 import torch
 from diffusers import StableDiffusionPipeline
+from dotenv import load_dotenv
+
+load_dotenv()
 
 model_id = "CompVis/stable-diffusion-v1-4"
 device = "cuda"
 
-pipe = StableDiffusionPipeline.from_pretrained(model_id)
+pipe = StableDiffusionPipeline.from_pretrained(model_id, use_auth_token=os.environ.get("HUGGINGFACE_TOKEN"))
 pipe = pipe.to(device)
 
 
@@ -23,5 +26,6 @@ def text_to_images(utterances, request_dir):
   return filenames
 
 
-utts =[{'transcript': 'hello'}, {'transcript': 'chasing after car'}]
-text_to_images(utterances=utts, request_dir='hellohere')
+if __name__ == '__main__':
+    utts = [{'transcript': 'hello'}, {'transcript': 'chasing after car'}]
+    text_to_images(utterances=utts, request_dir='hellohere')
