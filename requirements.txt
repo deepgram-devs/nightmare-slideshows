@@ -5,7 +5,7 @@ Jinja2==3.1.2
 MarkupSafe==2.1.1
 Pillow==9.3.0
 PyYAML==6.0
-Werkzeug==2.2.2
+Werkzeug==2.2.3
 accelerate==0.14.0
 certifi==2022.9.24
 charset-normalizer==2.1.1
